@@ -31,7 +31,7 @@ public class GerenciaVeiculo implements Crud {
             carros.add(carro);
             return;
         }
-        System.out.println("carro ja cadastrado!");
+        System.out.println("carro com a placa: "+placa+" ja foi cadastrado!");
     }
 
     private Veiculo buscaPlaca(String placa) {

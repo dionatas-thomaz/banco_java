@@ -27,7 +27,8 @@ public class GerenciaAlocador implements Crud{
             System.out.println("Alocador cadastrado com sucesso!");
             return;
         }
-        System.out.println("Alocador já cadastrado!");
+        System.out.println("Esse Alocador já foi cadastrado!");
+        System.out.println(" o cpf: " +cpf+" já foi cadastrado:");
     }
     private Alocador bucarCpf(String cpf) {
         for (Alocador alocador : alocadores) {
@@ -71,7 +72,6 @@ public class GerenciaAlocador implements Crud{
         System.out.println("2 - CPF");
         System.out.println("3 - Telefone");
         int opcao = entrada.nextInt();
-        entrada.skip("\n");
         switch (opcao) {
             case 1 -> {
                 System.out.print("Digite o novo nome: ");

@@ -30,7 +30,7 @@ public class Alocação {
             {
                 case 1 -> {
                     System.out.println("Cadastro de Alocador");
-                    gerenciaAlocador.cadastrar();
+                  //  gerenciaAlocador.cadastrar();
                     gerenciaVeiculo.cadastrar();
                 }
                 case 2 -> {
@@ -48,7 +48,7 @@ public class Alocação {
                     gerenciaVeiculo.relatorio();
                     gerenciaAlocador.relatorio();
                 }
-                case 0 -> System.out.println("Voltando ao menu principal...");
+                case 0 -> System.out.println("finalizando o programa...");
                 default -> System.out.println("Opção inválida!");
             }
 

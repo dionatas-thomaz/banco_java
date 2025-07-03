@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public abstract  class Pessoa {
     protected String nome;
     protected String cpf;
@@ -31,6 +33,18 @@ public abstract  class Pessoa {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Pessoa pessoa)) return false;
+        return Objects.equals(cpf, pessoa.cpf);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(cpf);
     }
 
 }
