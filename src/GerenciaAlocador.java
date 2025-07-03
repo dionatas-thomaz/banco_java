@@ -5,7 +5,7 @@ public class GerenciaAlocador implements Crud{
     private final ArrayList<Alocador> alocadores;
     private final Scanner entrada;
 
-    public GerenciaAlocador(ArrayList<Alocador> alocadores, Scanner entrada) {
+    public GerenciaAlocador(ArrayList<Alocador> alocadores) {
         this.alocadores = alocadores;
         this.entrada = new Scanner(System.in);
     }

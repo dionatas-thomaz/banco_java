@@ -66,4 +66,15 @@ public class Veiculo {
     public int hashCode() {
         return Objects.hash(placa);
     }
+
+    @Override
+    public String toString() {
+        return "Veiculo{" +
+                "modelo='" + modelo + '\'' +
+                ", placa='" + placa + '\'' +
+                ", cor='" + cor + '\'' +
+                ", marca='" + marca + '\'' +
+                ", ano='" + ano + '\'' +
+                '}';
+    }
 }

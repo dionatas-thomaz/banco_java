@@ -13,6 +13,6 @@ public class Alocador extends Pessoa{
                 "nome='" + nome + '\'' +
                 ", cpf='" + cpf + '\'' +
                 ", telefone='" + telefone + '\'' +
-                '}';
+                '}'+"\n";
     }
 }

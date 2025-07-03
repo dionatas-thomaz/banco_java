@@ -7,7 +7,7 @@ public class GerenciaVeiculo implements Crud {
     private final ArrayList<Veiculo> carros;
     private final Scanner entrada;
 
-    public GerenciaVeiculo(ArrayList<Veiculo> carros, Scanner entrada) {
+    public GerenciaVeiculo(ArrayList<Veiculo> carros) {
         this.carros = carros;
         this.entrada = new Scanner(System.in);
     }
@@ -25,8 +25,7 @@ public class GerenciaVeiculo implements Crud {
         String ano = entrada.nextLine();
         System.out.println("cor do veiculo: ");
         String cor = entrada.nextLine();
-
-        Veiculo carro = new Veiculo(modelo,placa,marca,ano,cor);
+        Veiculo carro = new Veiculo(modelo,placa,cor,marca,ano);
 
         if(!carros.contains(carro)){
             carros.add(carro);
@@ -51,7 +50,6 @@ public class GerenciaVeiculo implements Crud {
     private Veiculo busca(){
         System.out.println("Consultar pela Placa");
         String placa = entrada.nextLine();
-        entrada.skip("\n");
         Veiculo carro = null;
         carro = buscaCarro(placa);
         return carro;
