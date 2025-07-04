@@ -7,12 +7,4 @@ public class Alocador extends Pessoa{
         super(nome, cpf, telefone);
     }
 
-    @Override
-    public String toString() {
-        return "Alocador{" +
-                "nome='" + nome + '\'' +
-                ", cpf='" + cpf + '\'' +
-                ", telefone='" + telefone + '\'' +
-                '}'+"\n";
-    }
 }

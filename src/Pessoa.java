@@ -47,4 +47,14 @@ public abstract  class Pessoa {
         return Objects.hash(cpf);
     }
 
+
+    @Override
+    public String toString() {
+        return "Alocador{" +
+                "nome='" + nome + '\'' +
+                ", cpf='" + cpf + '\'' +
+                ", telefone='" + telefone + '\'' +
+                '}'+"\n";
+    }
+
 }
