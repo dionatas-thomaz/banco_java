@@ -1,3 +1,5 @@
+package modelos;
+
 import java.util.Objects;
 
 public abstract  class Pessoa {
@@ -50,7 +52,7 @@ public abstract  class Pessoa {
 
     @Override
     public String toString() {
-        return "Alocador{" +
+        return "modelos.Alocador{" +
                 "nome='" + nome + '\'' +
                 ", cpf='" + cpf + '\'' +
                 ", telefone='" + telefone + '\'' +

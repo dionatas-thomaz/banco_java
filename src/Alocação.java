@@ -1,3 +1,6 @@
+import modelos.Alocador;
+import modelos.Veiculo;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -29,18 +32,18 @@ public class Alocação {
             switch (entra)
             {
                 case 1 -> {
-                    System.out.println("Cadastro de Alocador");
+                    System.out.println("Cadastro de modelos.Alocador");
                   //  gerenciaAlocador.cadastrar();
                     gerenciaVeiculo.cadastrar();
                 }
                 case 2 -> {
-                    System.out.println("Alteração de Alocador");
+                    System.out.println("Alteração de modelos.Alocador");
                 }
                 case 3 -> {
-                    System.out.println("Exclusão de Alocador");
+                    System.out.println("Exclusão de modelos.Alocador");
                 }
                 case 4 -> {
-                    System.out.println("Consulta de Alocador");
+                    System.out.println("Consulta de modelos.Alocador");
                     gerenciaVeiculo.consultar();
                 }
                 case 5 -> {

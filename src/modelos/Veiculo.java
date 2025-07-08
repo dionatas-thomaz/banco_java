@@ -1,3 +1,5 @@
+package modelos;
+
 import java.util.Objects;
 
 public class Veiculo {
@@ -69,7 +71,7 @@ public class Veiculo {
 
     @Override
     public String toString() {
-        return "Veiculo{" +
+        return "modelos.Veiculo{" +
                 "modelo='" + modelo + '\'' +
                 ", placa='" + placa + '\'' +
                 ", cor='" + cor + '\'' +

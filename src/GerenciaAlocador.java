@@ -1,3 +1,5 @@
+import modelos.Alocador;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -12,7 +14,7 @@ public class GerenciaAlocador implements Crud{
 
     @Override
     public void cadastrar() {
-        System.out.println("Cadastro de Alocador");
+        System.out.println("Cadastro de modelos.Alocador");
         System.out.print("Nome: ");
         String nome = entrada.nextLine();
         System.out.print("CPF: ");
@@ -24,10 +26,10 @@ public class GerenciaAlocador implements Crud{
 
         if (!alocadores.contains(alocador)) {
             alocadores.add(alocador);
-            System.out.println("Alocador cadastrado com sucesso!");
+            System.out.println("modelos.Alocador cadastrado com sucesso!");
             return;
         }
-        System.out.println("Esse Alocador já foi cadastrado!");
+        System.out.println("Esse modelos.Alocador já foi cadastrado!");
         System.out.println(" o cpf: " +cpf+" já foi cadastrado:");
     }
     private Alocador bucarCpf(String cpf) {
@@ -50,20 +52,20 @@ public class GerenciaAlocador implements Crud{
         Alocador alocador = null;
         alocador = buscaAlocador(cpf);
         if (alocador == null) {
-            System.out.println("Alocador não encontrado!");
+            System.out.println("modelos.Alocador não encontrado!");
         }
         return alocador;
     }
 
     @Override
     public void alterar() {
-        System.out.println("Alteração de Alocador");
+        System.out.println("Alteração de modelos.Alocador");
         System.out.println("alocadores cadastrados: ");
         System.out.println(alocadores);
 
         Alocador alocador =  busca();
         if (alocador == null) {
-            System.out.println("Alocador não encontrado");
+            System.out.println("modelos.Alocador não encontrado");
             return;
         }
         System.out.println(alocador);
@@ -95,16 +97,16 @@ public class GerenciaAlocador implements Crud{
 
     @Override
     public void excluir() {
-        System.out.println("Exclusão de Alocador");
+        System.out.println("Exclusão de modelos.Alocador");
         System.out.println("Alocadores cadastrados: ");
         System.out.println(alocadores);
         Alocador alocador = busca();
         if (alocador == null) {
-            System.out.println("Alocador não encontrado");
+            System.out.println("modelos.Alocador não encontrado");
             return;
         }
         alocadores.remove(alocador);
-        System.out.println("Alocador excluído com sucesso!");
+        System.out.println("modelos.Alocador excluído com sucesso!");
     }
 
     @Override
@@ -114,12 +116,12 @@ public class GerenciaAlocador implements Crud{
 
     @Override
     public void consultar() {
-        System.out.println("Consultar Alocador");
+        System.out.println("Consultar modelos.Alocador");
         System.out.println("Alocadores cadastrados: ");
         System.out.println(alocadores);
         Alocador alocador = busca();
         if (alocador == null) {
-            System.out.println("Alocador não encontrado");
+            System.out.println("modelos.Alocador não encontrado");
             return;
         }
         System.out.println(alocador);
