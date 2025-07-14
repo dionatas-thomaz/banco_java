@@ -1,41 +1,30 @@
-package modelos;
+package model;
 
 import java.util.Objects;
 
 public abstract  class Pessoa {
+
+    protected Integer id;
     protected String nome;
     protected String cpf;
     protected String telefone;
+
 
     public Pessoa(String nome, String cpf, String telefone) {
         this.nome = nome;
         this.cpf = cpf;
         this.telefone = telefone;
+        this.id = null;
     }
 
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
+    public Integer getId() { return id; }
+    public void setId(Integer id) { this.id = id; }
+    public String getNome() { return nome; }
+    public void setNome(String nome) { this.nome = nome; }
+    public String getCpf() { return cpf; }
+    public void setCpf(String cpf) { this.cpf = cpf; }
+    public String getTelefone() { return telefone; }
+    public void setTelefone(String telefone) { this.telefone = telefone; }
 
     @Override
     public boolean equals(Object o) {
@@ -49,14 +38,14 @@ public abstract  class Pessoa {
         return Objects.hash(cpf);
     }
 
-
     @Override
     public String toString() {
-        return "modelos.Alocador{" +
-                "nome='" + nome + '\'' +
+        return "Pessoa{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
                 ", cpf='" + cpf + '\'' +
                 ", telefone='" + telefone + '\'' +
-                '}'+"\n";
+                '}';
     }
 
 }
