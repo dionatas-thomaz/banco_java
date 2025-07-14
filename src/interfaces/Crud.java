@@ -1,3 +1,5 @@
+package interfaces;
+
 public interface Crud {
     void cadastrar();
     void alterar();

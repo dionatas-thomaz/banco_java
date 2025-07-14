@@ -1,4 +1,4 @@
-package modelos;
+package model;
 
 import java.util.Objects;
 
@@ -8,6 +8,7 @@ public class Veiculo {
     protected  String cor;
     protected  String marca;
     protected  String ano;
+    private Integer idAlocador;
 
     public Veiculo(String modelo, String placa, String cor, String marca, String ano) {
         this.modelo = modelo;
@@ -15,6 +16,7 @@ public class Veiculo {
         this.cor = cor;
         this.marca = marca;
         this.ano = ano;
+        this.idAlocador = null;
     }
 
     public String getModelo() {
@@ -56,6 +58,7 @@ public class Veiculo {
     public void setAno(String ano) {
         this.ano = ano;
     }
+    public void setIdAlocador(Integer idAlocador) { this.idAlocador = idAlocador; }
 
     @Override
     public boolean equals(Object o) {
@@ -77,6 +80,7 @@ public class Veiculo {
                 ", cor='" + cor + '\'' +
                 ", marca='" + marca + '\'' +
                 ", ano='" + ano + '\'' +
+                ", idAlocador=" + idAlocador +
                 '}';
     }
 }

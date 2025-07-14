@@ -3,7 +3,7 @@
 ## TO-DO ✅
 
 ### ⚙️ Funcionalidades de CRUD
-- **Alocação de Veículos:**
+- **control.AlocaçãoController de Veículos:**
   - Cadastrar veículo
   - Alterar veículo
   - Remover veículo
