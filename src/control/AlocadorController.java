@@ -1,7 +1,6 @@
 package control;
 
 import dao.AlocadorDAO;
-import java.sql.SQLException;
 
 public class AlocadorController {
     private final AlocadorDAO alocadorDAO;
@@ -10,39 +9,43 @@ public class AlocadorController {
         this.alocadorDAO = new AlocadorDAO();
     }
 
-    public void adicionarAlocador(String nome, String cpf, String telefone) {
+    public void adicionarAlocador(Object[] dados) {
         try {
-            alocadorDAO.cadastrar(nome, cpf, telefone);
-        } catch (SQLException e) {
+            alocadorDAO.cadastrar(dados);
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
 
-    public void buscarAlocador(String cpf) {
+    public void buscarAlocador(Object[] dados) {
         try {
-            alocadorDAO.consultar(cpf);
-        } catch (SQLException e) {
+            alocadorDAO.consultar(dados);
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
 
-    public void atualizarAlocador(String cpf, int opcao, String fieldValue) {
+    public void atualizarAlocador(Object[] dados) {
         try {
-            alocadorDAO.alterar(cpf, opcao, fieldValue);
-        } catch (SQLException e) {
+            alocadorDAO.alterar(dados);
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
 
-    public void deletarAlocador(String cpf) {
+    public void deletarAlocador(Object[] dados) {
         try {
-            alocadorDAO.excluir(cpf);
-        } catch (SQLException e) {
+            alocadorDAO.excluir(dados);
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
 
     public void listarAlocadores() {
-        alocadorDAO.relatorio();
+        try {
+            alocadorDAO.relatorio();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
