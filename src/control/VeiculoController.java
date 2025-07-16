@@ -1,7 +1,5 @@
 package control;
-
 import dao.VeiculoDAO;
-import java.sql.SQLException;
 
 public class VeiculoController {
     private final VeiculoDAO veiculoDAO;
@@ -10,39 +8,43 @@ public class VeiculoController {
         this.veiculoDAO = new VeiculoDAO();
     }
 
-    public void adicionarVeiculo(String modelo, String placa, String marca, String ano, String cor, Integer idAlocador) {
+    public void adicionarVeiculo(Object[] dados) {
         try {
-            veiculoDAO.cadastrar(modelo, placa, marca, ano, cor, idAlocador);
-        } catch (SQLException e) {
+            veiculoDAO.cadastrar(dados);
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
 
-    public void buscarVeiculo(String placa) {
+    public void buscarVeiculo(Object[] dados) {
         try {
-            veiculoDAO.consultar(placa);
-        } catch (SQLException e) {
+            veiculoDAO.consultar(dados);
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
 
-    public void atualizarVeiculo(String placa, int opcao, String fieldValue, Integer idAlocador) {
+    public void atualizarVeiculo(Object[] dados) {
         try {
-            veiculoDAO.alterar(placa, opcao, fieldValue, idAlocador);
-        } catch (SQLException e) {
+            veiculoDAO.alterar(dados);
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
 
-    public void deletarVeiculo(String placa) {
+    public void deletarVeiculo(Object[] dados) {
         try {
-            veiculoDAO.excluir(placa);
-        } catch (SQLException e) {
+            veiculoDAO.excluir(dados);
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
 
     public void listarVeiculos() {
-        veiculoDAO.relatorio();
+        try {
+            veiculoDAO.relatorio();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
