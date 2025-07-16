@@ -2,26 +2,15 @@ package dao;
 
 import interfaces.Crud;
 import model.Alocador;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class AlocadorDAO implements Crud {
     @Override
-    public void cadastrar() {
-        System.out.println("Cadastro de Alocador");
-        Scanner entrada = new Scanner(System.in);
-        System.out.print("Nome: ");
-        String nome = entrada.nextLine();
-        System.out.print("CPF: ");
-        String cpf = entrada.nextLine();
-        System.out.print("Telefone: ");
-        String telefone = entrada.nextLine();
-
+    public void cadastrar(String nome, String cpf, String telefone) throws SQLException {
         String sql = "INSERT INTO alocador (cpf, nome, telefone) VALUES (?, ?, ?)";
         try (Connection conn = ConexaoDAO.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
@@ -36,11 +25,11 @@ public class AlocadorDAO implements Crud {
                 System.out.println("Alocador cadastrado com sucesso! ID: " + id);
             }
         } catch (SQLException e) {
-            System.out.println("Erro ao cadastrar alocador. O CPF: " + cpf + " já foi cadastrado!");
+            throw new SQLException("Erro ao cadastrar alocador. O CPF: " + cpf + " ja foi cadastrado!");
         }
     }
 
-    private Alocador buscarCpf(String cpf) {
+    public Alocador buscarCpf(String cpf) {
         String sql = "SELECT * FROM alocador WHERE cpf = ?";
         try (Connection conn = ConexaoDAO.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -62,62 +51,29 @@ public class AlocadorDAO implements Crud {
     }
 
     @Override
-    public void consultar() {
-        System.out.println("Consultar Alocador");
-        System.out.println("Alocadores cadastrados: ");
-        relatorio();
-        Scanner entrada = new Scanner(System.in);
-        System.out.println("Consultar pelo CPF");
-        String cpf = entrada.nextLine();
+    public void consultar(String cpf) throws SQLException {
         Alocador alocador = buscarCpf(cpf);
         if (alocador == null) {
-            System.out.println("Alocador não encontrado!");
-            return;
+            throw new SQLException("Alocador nao encontrado!");
         }
         System.out.println(alocador);
     }
 
     @Override
-    public void alterar() {
-        Scanner entrada = new Scanner(System.in);
-        System.out.println("Alteração de Alocador");
-        System.out.println("Alocadores cadastrados: ");
-        relatorio();
-        System.out.println("Consultar pelo CPF");
-        String cpf = entrada.nextLine();
-        Alocador alocador = buscarCpf(cpf);
-        if (alocador == null) {
-            System.out.println("Alocador não encontrado!");
-            return;
-        }
-        System.out.println(alocador);
-        System.out.println("Escolha o campo a ser alterado:");
-        System.out.println("1 - Nome");
-        System.out.println("2 - CPF");
-        System.out.println("3 - Telefone");
-        int opcao = entrada.nextInt();
-        entrada.nextLine(); // Limpar o buffer
+    public void alterar(String cpf, int opcao, String fieldValue) throws SQLException {
         String sql = "";
-        String fieldValue = "";
         switch (opcao) {
             case 1:
-                System.out.print("Digite o novo nome: ");
-                fieldValue = entrada.nextLine();
                 sql = "UPDATE alocador SET nome = ? WHERE cpf = ?";
                 break;
             case 2:
-                System.out.print("Digite o novo CPF: ");
-                fieldValue = entrada.nextLine();
                 sql = "UPDATE alocador SET cpf = ? WHERE cpf = ?";
                 break;
             case 3:
-                System.out.print("Digite o novo telefone: ");
-                fieldValue = entrada.nextLine();
                 sql = "UPDATE alocador SET telefone = ? WHERE cpf = ?";
                 break;
             default:
-                System.out.println("Opção inválida!");
-                return;
+                throw new SQLException("Opcao invalida!");
         }
         try (Connection conn = ConexaoDAO.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -126,31 +82,24 @@ public class AlocadorDAO implements Crud {
             stmt.executeUpdate();
             System.out.println("Alocador atualizado com sucesso!");
         } catch (SQLException e) {
-            System.out.println("Erro ao atualizar alocador.");
+            throw new SQLException("Erro ao atualizar alocador.");
         }
     }
 
     @Override
-    public void excluir() {
-        Scanner entrada = new Scanner(System.in);
-        System.out.println("Exclusão de Alocador");
-        System.out.println("Alocadores cadastrados: ");
-        relatorio();
-        System.out.println("Consultar pelo CPF");
-        String cpf = entrada.nextLine();
+    public void excluir(String cpf) throws SQLException {
         Alocador alocador = buscarCpf(cpf);
         if (alocador == null) {
-            System.out.println("Alocador não encontrado!");
-            return;
+            throw new SQLException("Alocador nao encontrado!");
         }
         String sql = "DELETE FROM alocador WHERE cpf = ?";
         try (Connection conn = ConexaoDAO.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, cpf);
             stmt.executeUpdate();
-            System.out.println("Alocador excluído com sucesso!");
+            System.out.println("Alocador excluido com sucesso!");
         } catch (SQLException e) {
-            System.out.println("Erro ao remover alocador.");
+            throw new SQLException("Erro ao remover alocador.");
         }
     }
 
@@ -167,7 +116,7 @@ public class AlocadorDAO implements Crud {
                         rs.getString("cpf"),
                         rs.getString("telefone")
                 );
-                alocador.setId(rs.getInt("id")); // Recuperar e definir o id
+                alocador.setId(rs.getInt("id"));
                 alocadores.add(alocador);
             }
             if (alocadores.isEmpty()) {
